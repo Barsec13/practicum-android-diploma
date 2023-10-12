@@ -1,6 +1,7 @@
 package ru.practicum.android.diploma.filters.presentation
 
 import android.util.Log
+import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -110,7 +111,7 @@ class FiltersViewModel(
                 val regionList = mutableListOf<Region>()
                 if (results.data != null) {
                     areasList.addAll(results.data)
-                    areasList.map { it.areas.map { regionList.add(it) } }
+                    regionList.addAll(areasList.flatMap { it.areas })
                 }
                 when {
                     results.message != null -> {
@@ -136,7 +137,7 @@ class FiltersViewModel(
                 val industries = mutableListOf<Industries>()
                 if (results.data != null) {
                     industryList.addAll(results.data)
-                    industryList.map { it.industries.map { industries.add(it) } }
+                    industries.addAll(industryList.flatMap { it.industries })
                 }
                 when {
                     results.message != null -> {
@@ -173,7 +174,7 @@ class FiltersViewModel(
     }
 
     fun addSalary(query: String) {
-        query.takeIf { it.isNotEmpty() }?.let { filtersNew.salary = query.toInt() }
+        if(query.isEmpty()){ filtersNew.salary = 0 }else{ filtersNew.salary = query.toInt() }
         showAllClearButtom()
         hasDataChanged()
         writeFilters()
@@ -222,6 +223,7 @@ class FiltersViewModel(
     fun writeFilters() {
         writeFiltersJob = viewModelScope.launch {
             filtersInteractor.writeFilters(filtersNew)
+            showViewState.postValue(ShowViewState.showApplyButton)
         }
     }
 

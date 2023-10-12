@@ -154,12 +154,12 @@
         style="@style/Text_Regular_16_400"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_24"
         android:background="@drawable/field_for_search_edit_text"
         android:hint="@string/enter_salary"
         android:inputType="number"
         android:maxLines="1"
         android:paddingStart="@dimen/margin_16"
+        android:paddingTop="@dimen/margin_24"
         android:singleLine="true"
         android:textColor="@color/black"
         android:textColorHint="?attr/gray_to_white_color"
@@ -174,11 +174,12 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_16"
-        android:layout_marginTop="@dimen/margin_32"
+        android:layout_marginBottom="@dimen/margin_8"
         android:text="@string/expected_salary"
         android:textColor="?attr/gray_to_white_color"
-        app:layout_constraintBottom_toTopOf="@+id/salary_edit_text"
-        app:layout_constraintStart_toStartOf="@+id/left_border" />
+        app:layout_constraintBottom_toBottomOf="@+id/salary_edit_text"
+        app:layout_constraintStart_toStartOf="@+id/left_border"
+        app:layout_constraintTop_toTopOf="@+id/edit_text_background" />
 
     <ImageView
         android:id="@+id/clear_icon"
