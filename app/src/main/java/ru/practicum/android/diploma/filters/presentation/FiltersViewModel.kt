@@ -254,41 +254,30 @@ class FiltersViewModel(
         App.DATA_HAS_CHANGED = "no"
     }
 
-    fun searchIndustry(searchTerm: String?) {
+    fun searchIndustry(searchTerm: String?,isChecked:Boolean ) {
         val foundIndustriesList = mutableListOf<Industries>()
         foundIndustriesList.clear()
-        if (searchTerm.isNullOrEmpty()) {
+        if (searchTerm.isNullOrEmpty()&&isChecked!=true) {
             screenStateLiveData.postValue(ScreenState.ShowIndustryList(newIndustries))
         } else {
-            newIndustries.map {
-                if (it.name.contains(
-                        searchTerm,
-                        ignoreCase = true
-                    )
-                ) foundIndustriesList.add(it)
-            }
-            screenStateLiveData.postValue(ScreenState.ShowIndustryList(foundIndustriesList))
+            searchTerm?.let { if(it.isNotEmpty())newIndustries.map { if(it.name.contains(searchTerm, ignoreCase = true))
+                foundIndustriesList.add(it)
+                screenStateLiveData.postValue(ScreenState.ShowIndustryList(foundIndustriesList))
+            } }
         }
 
 
     }
-
-    fun searchRegion(searchTerm: String?) {
+    fun searchRegion(searchTerm: String?, isChecked:Boolean) {
         val foundRegionList = mutableListOf<Region>()
         foundRegionList.clear()
-        if (searchTerm.isNullOrEmpty()) {
+        if (searchTerm.isNullOrEmpty()&&isChecked!=true) {
             screenStateLiveData.postValue(ScreenState.ShowAreasList(region))
-
-        } else {
-            region.map {
-                if (it.name.contains(
-                        searchTerm,
-                        ignoreCase = true
-                    )
-                ) foundRegionList.add(it)
-            }
-            screenStateLiveData.postValue(ScreenState.ShowAreasList(foundRegionList))
         }
+            searchTerm?.let {if(it.isNotEmpty())region.map { if(it.name.contains(searchTerm, ignoreCase = true))
+                foundRegionList.add(it)
+                screenStateLiveData.postValue(ScreenState.ShowAreasList(foundRegionList))
+            } }
     }
 
     fun hasDataChanged() {

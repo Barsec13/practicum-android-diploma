@@ -36,6 +36,7 @@ class ChooseFilterFragment : BindingFragment<FragmentFilterSelectionBinding>() {
     private var industry: Industries? = null
     private var isRegionScreen: Boolean = false
     private var editText: String? = null
+    private var _isChecked = false
 
     override fun createBinding(
         inflater: LayoutInflater,
@@ -64,14 +65,15 @@ class ChooseFilterFragment : BindingFragment<FragmentFilterSelectionBinding>() {
             override fun onClickRegion(model: Region?, isChecked: Boolean) {
                 when (isChecked) {
                     true -> {
-                        search()
+                        _isChecked = isChecked
                         model!!.isChecked = true
                         areaList.map { if (it.equals(region)) it.isChecked = false }
-                        adapter?.setRegion(areaList)
+                        adapter?.notifyDataSetChanged()
                         region = model
                     }
 
                     false -> {
+                        _isChecked = isChecked
                         model!!.isChecked = false
                         region = null
                     }
@@ -84,14 +86,15 @@ class ChooseFilterFragment : BindingFragment<FragmentFilterSelectionBinding>() {
             override fun onClickIndustries(model: Industries?, isChecked: Boolean) {
                 when (isChecked) {
                     true -> {
-                        search()
+                        _isChecked=isChecked
                         model!!.isChecked = true
                         industryList.map { if (it.equals(industry)) it.isChecked = false }
-                        adapter?.setIndustrie(industryList)
+                        adapter?.notifyDataSetChanged()
                         industry = model
                     }
 
                     false -> {
+                        _isChecked = isChecked
                         model!!.isChecked = false
                         industry = null
                     }
@@ -130,6 +133,7 @@ class ChooseFilterFragment : BindingFragment<FragmentFilterSelectionBinding>() {
         binding.editTextCloseImage.setOnClickListener {
             binding.searchEditText.text.clear()
             binding.searchEditText.clearFocus()
+            search()
             hideKeyBoard()
         }
     }
@@ -152,12 +156,10 @@ class ChooseFilterFragment : BindingFragment<FragmentFilterSelectionBinding>() {
         }
     }
     fun search(){
-        if(!binding.searchEditText.text.isEmpty()) {
             when (isRegionScreen) {
-                true -> viewModel.searchRegion(binding.searchEditText.text.toString())
-                else -> viewModel.searchIndustry(binding.searchEditText.text.toString())
+                true -> viewModel.searchRegion(binding.searchEditText.text.toString(), _isChecked)
+                else -> viewModel.searchIndustry(binding.searchEditText.text.toString(), _isChecked)
             }
-        }
     }
 
 
@@ -168,7 +170,6 @@ class ChooseFilterFragment : BindingFragment<FragmentFilterSelectionBinding>() {
             is ScreenState.ShowCountriesScreen -> {
                 showCountriesScreen()
             }
-
             is ScreenState.ShowIndustryList -> showIndustryList(state.industryList)
             is ScreenState.ShowAreasList -> showAreasList(state.areasList)
             is ScreenState.ShowCountriesList -> showCountriesList(state.countriesList)
