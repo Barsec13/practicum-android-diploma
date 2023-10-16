@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/SelectionFilters"
+    android:id="@+id/selection_filters"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,23 +8,23 @@
     tools:context="ru.practicum.android.diploma.filters.ui.fragment.ChooseFilterFragment">
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/leftBorder"
+        android:id="@+id/left_border"
         style="@style/guideline"
         android:orientation="vertical"
         app:layout_constraintGuide_begin="16dp" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/rightBorder"
+        android:id="@+id/right_border"
         style="@style/guideline"
         android:orientation="vertical"
         app:layout_constraintGuide_end="16dp" />
 
     <ImageView
-        android:id="@+id/arrowback"
+        android:id="@+id/arrow_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/arrow_back"
-        app:layout_constraintStart_toStartOf="@+id/leftBorder"
+        app:layout_constraintStart_toStartOf="@+id/left_border"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="@dimen/margin_12"
         android:paddingEnd="@dimen/logo_padding_8"
@@ -40,9 +40,9 @@
         android:paddingVertical="@dimen/logo_padding_8"
         android:text="@string/choose_of_country"
         android:textColor="?attr/black_to_white_color"
-        app:layout_constraintBottom_toBottomOf="@+id/arrowback"
-        app:layout_constraintStart_toEndOf="@+id/arrowback"
-        app:layout_constraintTop_toTopOf="@+id/arrowback" />
+        app:layout_constraintBottom_toBottomOf="@+id/arrow_back"
+        app:layout_constraintStart_toEndOf="@+id/arrow_back"
+        app:layout_constraintTop_toTopOf="@+id/arrow_back" />
 
     <EditText
         android:id="@+id/search_edit_text"
@@ -58,9 +58,9 @@
         android:textColor="@color/black"
         android:textColorHint="?attr/gray_to_white_color"
         android:textCursorDrawable="@drawable/cursor"
-        app:layout_constraintEnd_toEndOf="@id/rightBorder"
+        app:layout_constraintEnd_toEndOf="@id/right_border"
         android:layout_marginTop="@dimen/margin_8"
-        app:layout_constraintStart_toStartOf="@id/leftBorder"
+        app:layout_constraintStart_toStartOf="@id/left_border"
         app:layout_constraintTop_toBottomOf="@+id/choose_textview"
         android:visibility="gone"
         />
@@ -98,27 +98,27 @@
         android:visibility="gone"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewFilters"
+        android:id="@+id/recycler_view_filters"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/margin_8"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/rightBorder"
+        app:layout_constraintEnd_toStartOf="@+id/right_border"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/leftBorder"
+        app:layout_constraintStart_toStartOf="@+id/left_border"
         app:layout_constraintTop_toBottomOf="@+id/search_edit_text"
         app:layout_constraintVertical_bias="0.0" />
 
     <ProgressBar
-        android:id="@+id/progressBar"
+        android:id="@+id/progress_bar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:indeterminateTint="@color/blue"
-        app:layout_constraintBottom_toBottomOf="@+id/recyclerViewFilters"
-        app:layout_constraintEnd_toEndOf="@+id/recyclerViewFilters"
-        app:layout_constraintStart_toStartOf="@+id/recyclerViewFilters"
+        app:layout_constraintBottom_toBottomOf="@+id/recycler_view_filters"
+        app:layout_constraintEnd_toEndOf="@+id/recycler_view_filters"
+        app:layout_constraintStart_toStartOf="@+id/recycler_view_filters"
         app:layout_constraintTop_toBottomOf="@+id/search_edit_text" />
 
     <TextView
@@ -132,8 +132,8 @@
         android:text="@string/choose"
         android:textColor="@color/white_2"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/rightBorder"
-        app:layout_constraintStart_toStartOf="@+id/leftBorder"
+        app:layout_constraintEnd_toStartOf="@+id/right_border"
+        app:layout_constraintStart_toStartOf="@+id/left_border"
         android:visibility="gone"/>
 
 

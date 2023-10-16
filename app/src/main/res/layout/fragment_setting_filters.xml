@@ -7,31 +7,31 @@
     tools:context="ru.practicum.android.diploma.filters.ui.fragment.SettingFiltersFragment">
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/leftBorder"
+        android:id="@+id/left_border"
         style="@style/guideline"
         android:orientation="vertical"
         app:layout_constraintGuide_begin="@dimen/margin_16" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/rightBorder"
+        android:id="@+id/right_border"
         style="@style/guideline"
         android:orientation="vertical"
         app:layout_constraintGuide_end="@dimen/margin_16" />
 
     <ImageView
-        android:id="@+id/arrowback"
+        android:id="@+id/arrow_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_12"
         android:paddingVertical="@dimen/logo_padding_8"
         android:paddingEnd="@dimen/logo_padding_8"
         android:src="@drawable/arrow_back"
-        app:layout_constraintStart_toStartOf="@+id/leftBorder"
+        app:layout_constraintStart_toStartOf="@+id/left_border"
         app:layout_constraintTop_toTopOf="parent" />
 
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/setting_filters_text_view"
         style="@style/Text_Medium_22_500"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -39,11 +39,11 @@
         android:paddingVertical="@dimen/logo_padding_8"
         android:text="@string/SettingFilters"
         android:textColor="?attr/black_to_white_color"
-        app:layout_constraintBottom_toBottomOf="@+id/arrowback"
-        app:layout_constraintEnd_toStartOf="@+id/rightBorder"
+        app:layout_constraintBottom_toBottomOf="@+id/arrow_back"
+        app:layout_constraintEnd_toStartOf="@+id/right_border"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/arrowback"
-        app:layout_constraintTop_toTopOf="@+id/arrowback"
+        app:layout_constraintStart_toEndOf="@+id/arrow_back"
+        app:layout_constraintTop_toTopOf="@+id/arrow_back"
         app:layout_constraintVertical_bias="0.0" />
 
     <com.google.android.material.textfield.TextInputLayout
@@ -57,7 +57,7 @@
         app:boxStrokeWidthFocused="0dp"
         app:layout_constraintEnd_toStartOf="@+id/place_of_work_button"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2">
+        app:layout_constraintTop_toBottomOf="@+id/setting_filters_text_view">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/place_of_work_editText"
@@ -84,7 +84,7 @@
         app:layout_constraintTop_toBottomOf="@+id/place_of_work">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/industryEditText"
+            android:id="@+id/industry_edit_text"
             style="@style/Text_Regular_16_400"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -102,7 +102,7 @@
         android:paddingStart="@dimen/logo_padding_20"
         android:src="@drawable/arrow_forward"
         app:layout_constraintBottom_toBottomOf="@+id/place_of_work"
-        app:layout_constraintEnd_toStartOf="@+id/rightBorder"
+        app:layout_constraintEnd_toStartOf="@+id/right_border"
         app:layout_constraintTop_toTopOf="@+id/place_of_work" />
 
     <ImageView
@@ -113,7 +113,7 @@
         android:src="@drawable/clear_place_of_work"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/place_of_work"
-        app:layout_constraintEnd_toStartOf="@+id/rightBorder"
+        app:layout_constraintEnd_toStartOf="@+id/right_border"
         app:layout_constraintTop_toTopOf="@+id/place_of_work" />
 
     <ImageView
@@ -123,7 +123,7 @@
         android:paddingStart="@dimen/logo_padding_20"
         android:src="@drawable/arrow_forward"
         app:layout_constraintBottom_toBottomOf="@+id/industry"
-        app:layout_constraintEnd_toStartOf="@+id/rightBorder"
+        app:layout_constraintEnd_toStartOf="@+id/right_border"
         app:layout_constraintTop_toTopOf="@+id/industry"
         app:layout_constraintVertical_bias="1.0" />
 
@@ -135,7 +135,7 @@
         android:src="@drawable/clear_place_of_work"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/industry"
-        app:layout_constraintEnd_toStartOf="@+id/rightBorder"
+        app:layout_constraintEnd_toStartOf="@+id/right_border"
         app:layout_constraintTop_toTopOf="@+id/industry"
         app:layout_constraintVertical_bias="1.0" />
 
@@ -145,8 +145,8 @@
         android:layout_height="51dp"
         android:layout_marginTop="@dimen/margin_24"
         android:background="@drawable/field_for_search_edit_text"
-        app:layout_constraintEnd_toEndOf="@id/rightBorder"
-        app:layout_constraintStart_toStartOf="@id/leftBorder"
+        app:layout_constraintEnd_toEndOf="@id/right_border"
+        app:layout_constraintStart_toStartOf="@id/left_border"
         app:layout_constraintTop_toBottomOf="@+id/industry" />
 
     <EditText
@@ -154,18 +154,18 @@
         style="@style/Text_Regular_16_400"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_24"
         android:background="@drawable/field_for_search_edit_text"
         android:hint="@string/enter_salary"
         android:inputType="number"
         android:maxLines="1"
         android:paddingStart="@dimen/margin_16"
+        android:paddingTop="@dimen/margin_24"
         android:singleLine="true"
         android:textColor="@color/black"
         android:textColorHint="?attr/gray_to_white_color"
-        app:layout_constraintEnd_toEndOf="@id/rightBorder"
+        app:layout_constraintEnd_toEndOf="@id/right_border"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@id/leftBorder"
+        app:layout_constraintStart_toStartOf="@id/left_border"
         app:layout_constraintTop_toTopOf="@+id/edit_text_background" />
 
     <TextView
@@ -174,11 +174,12 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_16"
-        android:layout_marginTop="@dimen/margin_32"
+        android:layout_marginBottom="@dimen/margin_8"
         android:text="@string/expected_salary"
         android:textColor="?attr/gray_to_white_color"
-        app:layout_constraintBottom_toTopOf="@+id/salary_edit_text"
-        app:layout_constraintStart_toStartOf="@+id/leftBorder" />
+        app:layout_constraintBottom_toBottomOf="@+id/salary_edit_text"
+        app:layout_constraintStart_toStartOf="@+id/left_border"
+        app:layout_constraintTop_toTopOf="@+id/edit_text_background" />
 
     <ImageView
         android:id="@+id/clear_icon"
@@ -188,7 +189,7 @@
         android:src="@drawable/close"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@id/edit_text_background"
-        app:layout_constraintEnd_toStartOf="@+id/rightBorder"
+        app:layout_constraintEnd_toStartOf="@+id/right_border"
         app:layout_constraintTop_toTopOf="@id/edit_text_background" />
 
     <TextView
@@ -200,7 +201,7 @@
         android:text="@string/not_show_without_sallary"
         android:textColor="?attr/black_to_white_color"
         app:layout_constraintEnd_toStartOf="@+id/filter_checkbox"
-        app:layout_constraintStart_toStartOf="@+id/leftBorder"
+        app:layout_constraintStart_toStartOf="@+id/left_border"
         app:layout_constraintTop_toBottomOf="@+id/salary_edit_text" />
 
     <CheckBox
@@ -211,7 +212,7 @@
         android:buttonTint="@color/blue"
         app:layout_constraintBottom_toBottomOf="@+id/no_without_sallary"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/rightBorder"
+        app:layout_constraintEnd_toStartOf="@id/right_border"
         app:layout_constraintTop_toTopOf="@+id/no_without_sallary"
         app:layout_constraintVertical_bias="0.448" />
 
@@ -226,12 +227,12 @@
         android:text="@string/apply"
         android:textColor="@color/white_2"
         android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@+id/clearAll"
-        app:layout_constraintEnd_toStartOf="@+id/rightBorder"
-        app:layout_constraintStart_toStartOf="@+id/leftBorder" />
+        app:layout_constraintBottom_toTopOf="@+id/clear_all"
+        app:layout_constraintEnd_toStartOf="@+id/right_border"
+        app:layout_constraintStart_toStartOf="@+id/left_border" />
 
     <TextView
-        android:id="@+id/clearAll"
+        android:id="@+id/clear_all"
         style="@style/Text_Medium_16_500"
         android:layout_width="0dp"
         android:layout_height="@dimen/weight_height_60"
@@ -241,8 +242,8 @@
         android:textColor="?attr/red_to_white_color"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/rightBorder"
+        app:layout_constraintEnd_toStartOf="@+id/right_border"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/leftBorder" />
+        app:layout_constraintStart_toStartOf="@+id/left_border" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

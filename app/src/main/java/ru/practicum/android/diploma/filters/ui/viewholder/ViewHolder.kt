@@ -6,7 +6,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import ru.practicum.android.diploma.R
-import ru.practicum.android.diploma.filters.domain.models.Industry
 import ru.practicum.android.diploma.filters.domain.models.Areas
 import ru.practicum.android.diploma.filters.domain.models.Industries
 import ru.practicum.android.diploma.filters.domain.models.Region
@@ -14,7 +13,7 @@ import ru.practicum.android.diploma.filters.ui.adapter.FilterSelectionClickListe
 
 class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-    private var textView: TextView = itemView.findViewById(R.id.SelectionFilters)
+    private var textView: TextView = itemView.findViewById(R.id.selection_filters)
     private var checkBox: CheckBox = itemView.findViewById(R.id.filter_checkbox)
     private var rightArrow: ImageView? = itemView.findViewById(R.id.choose_country_bottom)
 

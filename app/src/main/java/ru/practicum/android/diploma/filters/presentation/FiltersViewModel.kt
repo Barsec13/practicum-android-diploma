@@ -1,6 +1,7 @@
 package ru.practicum.android.diploma.filters.presentation
 
 import android.util.Log
+import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -110,7 +111,7 @@ class FiltersViewModel(
                 val regionList = mutableListOf<Region>()
                 if (results.data != null) {
                     areasList.addAll(results.data)
-                    areasList.map { it.areas.map { regionList.add(it) } }
+                    regionList.addAll(areasList.flatMap { it.areas })
                 }
                 when {
                     results.message != null -> {
@@ -136,7 +137,7 @@ class FiltersViewModel(
                 val industries = mutableListOf<Industries>()
                 if (results.data != null) {
                     industryList.addAll(results.data)
-                    industryList.map { it.industries.map { industries.add(it) } }
+                    industries.addAll(industryList.flatMap { it.industries })
                 }
                 when {
                     results.message != null -> {
@@ -173,7 +174,7 @@ class FiltersViewModel(
     }
 
     fun addSalary(query: String) {
-        query.takeIf { it.isNotEmpty() }?.let { filtersNew.salary = query.toInt() }
+        if(query.isEmpty()){ filtersNew.salary = 0 }else{ filtersNew.salary = query.toInt() }
         showAllClearButtom()
         hasDataChanged()
         writeFilters()
@@ -211,6 +212,7 @@ class FiltersViewModel(
                     filtersNew.areasNames = filters.areasNames
                     filtersNew.countryId = filters.countryId
                     filtersNew.industriesName = filters.industriesName
+                    filtersNew.industriesId = filters.industriesId
                     filtersNew.salary = filters.salary
                     filtersNew.onlyWithSalary = filters.onlyWithSalary
                     lastSallary = filters.salary.toString()
@@ -221,6 +223,7 @@ class FiltersViewModel(
     fun writeFilters() {
         writeFiltersJob = viewModelScope.launch {
             filtersInteractor.writeFilters(filtersNew)
+            showViewState.postValue(ShowViewState.showApplyButton)
         }
     }
 
@@ -251,41 +254,30 @@ class FiltersViewModel(
         App.DATA_HAS_CHANGED = "no"
     }
 
-    fun searchIndustry(searchTerm: String?) {
+    fun searchIndustry(searchTerm: String?,isChecked:Boolean ) {
         val foundIndustriesList = mutableListOf<Industries>()
         foundIndustriesList.clear()
-        if (searchTerm.isNullOrEmpty()) {
+        if (searchTerm.isNullOrEmpty()&&isChecked!=true) {
             screenStateLiveData.postValue(ScreenState.ShowIndustryList(newIndustries))
         } else {
-            newIndustries.map {
-                if (it.name.contains(
-                        searchTerm,
-                        ignoreCase = true
-                    )
-                ) foundIndustriesList.add(it)
-            }
-            screenStateLiveData.postValue(ScreenState.ShowIndustryList(foundIndustriesList))
+            searchTerm?.let { if(it.isNotEmpty())newIndustries.map { if(it.name.contains(searchTerm, ignoreCase = true))
+                foundIndustriesList.add(it)
+                screenStateLiveData.postValue(ScreenState.ShowIndustryList(foundIndustriesList))
+            } }
         }
 
 
     }
-
-    fun searchRegion(searchTerm: String?) {
+    fun searchRegion(searchTerm: String?, isChecked:Boolean) {
         val foundRegionList = mutableListOf<Region>()
         foundRegionList.clear()
-        if (searchTerm.isNullOrEmpty()) {
+        if (searchTerm.isNullOrEmpty()&&isChecked!=true) {
             screenStateLiveData.postValue(ScreenState.ShowAreasList(region))
-
-        } else {
-            region.map {
-                if (it.name.contains(
-                        searchTerm,
-                        ignoreCase = true
-                    )
-                ) foundRegionList.add(it)
-            }
-            screenStateLiveData.postValue(ScreenState.ShowAreasList(foundRegionList))
         }
+            searchTerm?.let {if(it.isNotEmpty())region.map { if(it.name.contains(searchTerm, ignoreCase = true))
+                foundRegionList.add(it)
+                screenStateLiveData.postValue(ScreenState.ShowAreasList(foundRegionList))
+            } }
     }
 
     fun hasDataChanged() {

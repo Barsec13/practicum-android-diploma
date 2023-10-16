@@ -27,6 +27,7 @@ class SearchViewModel(
     private var isNextPageLoading = true
     private val vacanciesList = mutableListOf<Vacancy>()
     private var areasId: String? = null
+    private var countryId:String? = null
     private var industriesId: String? = null
     private var salary: Int = 0
     private var onlyWithSalary: Boolean = false
@@ -101,7 +102,7 @@ class SearchViewModel(
         options["text"] = text
         options["page"] = currentPage.toString()
         options["per_page"] = NUMBER_LOAD_VACANCIES.toString()
-        if (areasId != null) options["area"] = areasId!!
+        if(areasId!=null&&countryId!=null){options["area"] = areasId!!} else if(areasId.equals(null)&&countryId!=null){options["area"] = countryId!!}
         if (industriesId != null) options["industry"] = industriesId!!
         if (salary != 0) options["salary"] = salary.toString()
         options["only_with_salary"] = onlyWithSalary.toString()
@@ -118,12 +119,13 @@ class SearchViewModel(
     }
 
     private fun getFilters(filters: Filters) {
+        countryId = filters.countryId
         areasId = filters.areasId
         industriesId = filters.industriesId
         salary = filters.salary
         onlyWithSalary = filters.onlyWithSalary
 
-        if (areasId != null || industriesId != null || salary != 0 || onlyWithSalary) {
+        if (areasId != null || industriesId != null || salary != 0 || onlyWithSalary|| countryId !=null) {
             _filterIconStateLiveData.postValue(FilterIconState.YesFilters)
         } else {
             _filterIconStateLiveData.postValue(FilterIconState.NoFilters)

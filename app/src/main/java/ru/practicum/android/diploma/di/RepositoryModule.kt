@@ -13,10 +13,10 @@ import ru.practicum.android.diploma.search.domain.SearchRepository
 
 val repositoryModule = module {
     singleOf(::SearchRepositoryImpl).bind<SearchRepository>()
+
     factory { VacancyDbConverter() }
 
-    single<VacancyDbRepository> {
-        VacancyDbRepositoryImpl(appDataBase = get())
-    }
+    singleOf(::VacancyDbRepositoryImpl).bind<VacancyDbRepository>()
+
     singleOf(::FiltersRepositoryImpl).bind<FiltersRepository>()
 }

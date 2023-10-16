@@ -13,7 +13,6 @@ import ru.practicum.android.diploma.R
 import ru.practicum.android.diploma.databinding.FragmentFavouriteBinding
 import ru.practicum.android.diploma.details.presentation.ui.VacancyFragment
 import ru.practicum.android.diploma.favourite.presentation.models.FavoriteStateInterface
-import ru.practicum.android.diploma.favourite.presentation.models.GetFavouriteVacancyInfoState
 import ru.practicum.android.diploma.favourite.presentation.viewvodel.FavouriteViewModel
 import ru.practicum.android.diploma.search.domain.models.Vacancy
 import ru.practicum.android.diploma.util.BindingFragment
@@ -46,16 +45,12 @@ class FragmentFavourite : BindingFragment<FragmentFavouriteBinding>() {
             renderStateFavouriteVacancies(state)
         }
 
-        favouriteViewModel.observeStateGetVacancyInfo().observe(viewLifecycleOwner) { state ->
-            renderStateGetInfoVacancy(state)
-        }
-
         favouriteViewModel.showFavouriteVacancies()
     }
 
     override fun onPause() {
         super.onPause()
-        favouriteViewModel.pause()
+        //favouriteViewModel.pause()
     }
 
 
@@ -67,8 +62,8 @@ class FragmentFavourite : BindingFragment<FragmentFavouriteBinding>() {
     private fun setListeners() {
 
         onFavouriteVacancyClickDebounce =
-            debounce<Vacancy>(CLICK_DEBOUNCE_DELAY_MILLIS, lifecycleScope, false) { vacancy ->
-                favouriteViewModel.getFavouriteVacancyInfo(vacancy.id)
+            debounce(CLICK_DEBOUNCE_DELAY_MILLIS, lifecycleScope, false) { vacancy ->
+                sendToDetail(vacancy)
             }
 
         vacancyAdapter.itemClickListener = { position, vacancy ->
@@ -88,18 +83,6 @@ class FragmentFavourite : BindingFragment<FragmentFavouriteBinding>() {
             is FavoriteStateInterface.FavoriteVacanciesIsEmpty -> showPlaceHolder()
             is FavoriteStateInterface.FavoriteVacancies ->
                 showFavoriteVacancies(favoriteStateInterface.favoriteVacancies)
-        }
-    }
-
-    private fun renderStateGetInfoVacancy(
-        favouriteVacanciesInfo: GetFavouriteVacancyInfoState?) {
-
-        if (favouriteVacanciesInfo == null) return
-
-        when(favouriteVacanciesInfo){
-            is GetFavouriteVacancyInfoState.FavoriteVacanciesInfoIsEmpty -> return
-            is GetFavouriteVacancyInfoState.FavoriteVacanciesInfo
-            -> sendToDetail(favouriteVacanciesInfo.vacancy)
         }
     }
 

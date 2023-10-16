@@ -6,23 +6,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="ru.practicum.android.diploma.filters.ui.fragment.PlaceOfWorkFragment">
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/leftBorder"
+        android:id="@+id/left_border"
         style="@style/guideline"
         android:orientation="vertical"
         app:layout_constraintGuide_begin="@dimen/margin_16" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/rightBorder"
+        android:id="@+id/right_border"
         style="@style/guideline"
         android:orientation="vertical"
         app:layout_constraintGuide_end="@dimen/margin_16" />
 
     <ImageView
-        android:id="@+id/arrowback"
+        android:id="@+id/arrow_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/arrow_back"
-        app:layout_constraintStart_toStartOf="@+id/leftBorder"
+        app:layout_constraintStart_toStartOf="@+id/left_border"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="@dimen/margin_12"
         android:paddingEnd="@dimen/logo_padding_8"
@@ -38,10 +38,10 @@
         android:paddingVertical="@dimen/logo_padding_8"
         android:text="@string/choose_place_of_work"
         android:textColor="?attr/black_to_white_color"
-        app:layout_constraintBottom_toBottomOf="@+id/arrowback"
-        app:layout_constraintEnd_toStartOf="@+id/rightBorder"
-        app:layout_constraintStart_toEndOf="@+id/arrowback"
-        app:layout_constraintTop_toTopOf="@+id/arrowback" />
+        app:layout_constraintBottom_toBottomOf="@+id/arrow_back"
+        app:layout_constraintEnd_toStartOf="@+id/right_border"
+        app:layout_constraintStart_toEndOf="@+id/arrow_back"
+        app:layout_constraintTop_toTopOf="@+id/arrow_back" />
 
 
 
@@ -62,7 +62,7 @@
         >
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/countryEditText"
+            android:id="@+id/country_edit_text"
             style="@style/Text_Regular_16_400"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -78,7 +78,7 @@
         android:paddingStart="@dimen/logo_padding_20"
         android:src="@drawable/arrow_forward"
         app:layout_constraintBottom_toBottomOf="@+id/country"
-        app:layout_constraintEnd_toStartOf="@+id/rightBorder"
+        app:layout_constraintEnd_toStartOf="@+id/right_border"
         app:layout_constraintTop_toTopOf="@+id/country"
         android:visibility="visible"/>
     <ImageView
@@ -88,7 +88,7 @@
         android:paddingStart="@dimen/logo_padding_20"
         android:src="@drawable/clear_place_of_work"
         app:layout_constraintBottom_toBottomOf="@+id/country"
-        app:layout_constraintEnd_toStartOf="@+id/rightBorder"
+        app:layout_constraintEnd_toStartOf="@+id/right_border"
         app:layout_constraintTop_toTopOf="@+id/country"
         android:visibility="gone"/>
 
@@ -98,7 +98,6 @@
         android:id="@+id/region"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/country"
         app:layout_constraintEnd_toStartOf="@+id/region_button"
@@ -109,7 +108,7 @@
         android:visibility="visible"
         >
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/regionEditText"
+            android:id="@+id/region_edit_text"
             style="@style/Text_Regular_16_400"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -124,7 +123,7 @@
         android:paddingStart="@dimen/logo_padding_20"
         android:src="@drawable/arrow_forward"
         app:layout_constraintBottom_toBottomOf="@+id/region"
-        app:layout_constraintEnd_toStartOf="@+id/rightBorder"
+        app:layout_constraintEnd_toStartOf="@+id/right_border"
         app:layout_constraintTop_toTopOf="@+id/region"
         android:visibility="visible"/>
     <ImageView
@@ -134,7 +133,7 @@
         android:paddingStart="@dimen/logo_padding_20"
         android:src="@drawable/clear_place_of_work"
         app:layout_constraintBottom_toBottomOf="@+id/region"
-        app:layout_constraintEnd_toStartOf="@+id/rightBorder"
+        app:layout_constraintEnd_toStartOf="@+id/right_border"
         app:layout_constraintTop_toTopOf="@+id/region"
         android:visibility="gone"/>
 
@@ -149,8 +148,8 @@
         android:text="@string/choose"
         android:textColor="@color/white_2"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/rightBorder"
-        app:layout_constraintStart_toStartOf="@+id/leftBorder"
+        app:layout_constraintEnd_toStartOf="@+id/right_border"
+        app:layout_constraintStart_toStartOf="@+id/left_border"
         android:visibility="gone"/>
 
 

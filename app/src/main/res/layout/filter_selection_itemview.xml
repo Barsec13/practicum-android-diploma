@@ -3,14 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/logo_padding_20"
+    android:layout_marginBottom="@dimen/logo_padding_20"
     xmlns:tools="http://schemas.android.com/tools"
+
     >
 
     <TextView
-        android:id="@+id/SelectionFilters"
+        android:id="@+id/selection_filters"
         style="@style/Text_Regular_16_400"
         android:layout_width="0dp"
-        android:layout_height="@dimen/weight_height_60"
+        android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:layout_marginEnd="@dimen/margin_5"
         tools:text="@string/country"
@@ -22,19 +25,20 @@
     <ImageView
         android:id="@+id/choose_country_bottom"
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/weight_height_60"
+        android:layout_height="wrap_content"
         android:src="@drawable/arrow_forward"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/selection_filters"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
     <CheckBox
         android:id="@+id/filter_checkbox"
-        android:layout_width="@dimen/weight_height_25"
-        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/weight_height_25"
         android:backgroundTint="@color/blue"
+        android:button="@drawable/check_circle"
         android:buttonTint="@color/blue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:button="@drawable/check_circle"/>
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -91,7 +91,7 @@ class PlaceOfWorkFragment : BindingFragment<FragmentPlaceOfWorkBinding>() {
     }
 
     private fun back() {
-        binding.arrowback.setOnClickListener {
+        binding.arrowBack.setOnClickListener {
             findNavController().navigateUp()
         }
 
